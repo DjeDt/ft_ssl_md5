@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 16:31:33 by ddinaut           #+#    #+#              #
-#    Updated: 2018/12/08 21:01:48 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/12/09 16:16:50 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -43,11 +43,12 @@ CLEAN_LINE	= \033[K
 END_COL		= \033[0;m
 
 # Sources #
-SRCS =					\
-		ft_ssl.c				\
-		manage_md5.c			\
-		routine_md5.c			\
-		secure_hash_algo_512.c
+SRCS =						\
+	ft_ssl.c				\
+	manage_md5.c			\
+	routine_md5.c			\
+	algo_md5.c				\
+	secure_hash_algo_512.c
 
 
 OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
