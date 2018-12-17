@@ -6,7 +6,7 @@
 /*   By: ddinaut <ddinaut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 21:52:50 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/12/08 22:44:35 by ddinaut          ###   ########.fr       */
+/*   Updated: 2018/12/11 15:04:41 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,6 @@ int		manage_options(char **av, int *count, int *flag)
 	return (0);
 }
 
-int		run_md5(char **av, int *count, int flag)
-{
-	int	ret;
-
-	ret = 0;
-	while (av[(*count)] && ft_strlen(av[(*count)]) > 1)
-	{
-		if (av[(*count)][0] != '-')
-			break ;
-		if (manage_options(av, count, &flag) == -1)
-			return (-1);
-		(*count)++;
-	}
-	while (av[(*count)] != NULL)
-		ret = md5_from_file(av[(*count)++], flag);
-	return (ret);
-}
-
 int		manage_md5(char **av, int *count, int ac)
 {
 	int	ret;
@@ -75,8 +57,15 @@ int		manage_md5(char **av, int *count, int ac)
 		ret = md5_from_standard_input(flag);
 	else
 	{
-		(*count)++;
-		ret = run_md5(av, count, flag);
+		while (av[++(*count)] && ft_strlen(av[(*count)]) > 1)
+		{
+			if (av[(*count)][0] != '-')
+				break ;
+			if (manage_options(av, count, &flag) == -1)
+				return (-1);
+		}
+		while (av[(*count)] != NULL)
+			ret = md5_from_file(av[(*count)++], flag);
 	}
 	return (ret);
 }
