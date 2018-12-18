@@ -6,7 +6,7 @@
 /*   By: ddinaut <ddinaut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 15:30:44 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/12/18 20:01:56 by ddinaut          ###   ########.fr       */
+/*   Updated: 2018/12/18 20:29:41 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void	transform_md5(uint32_t *context, uint32_t *buffer)
 			master_func(f2, cpy, buffer[count] + k[count], r[count]);
 		else if (count < 48)
 			master_func(f3, cpy, buffer[count] + k[count], r[count]);
-		else if (count < 64)
+		else
 			master_func(f4, cpy, buffer[count] + k[count], r[count]);
 		round_context(cpy);
 		count++;
@@ -219,17 +219,6 @@ void	update_md5(t_mdbuffer *mdb, uint8_t *input, size_t size)
 	ft_memcpy(mdb->buffer + size, padding, 64 - size);
 	ft_memcpy(mdb->buffer + 56, &size2, 8);
 	transform_md5(mdb->context, (uint32_t*)mdb->buffer);
-
-    uint8_t *p;
-	p=(uint8_t *)&mdb->context[0];
-    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
-    p=(uint8_t *)&mdb->context[1];
-    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
-    p=(uint8_t *)&mdb->context[2];
-    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
-    p=(uint8_t *)&mdb->context[3];
-	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
-
 }
 
 void	final_md5(t_mdbuffer *mdb, char *final)
@@ -253,6 +242,19 @@ void	final_md5(t_mdbuffer *mdb, char *final)
 	mdb->buffer[15] = mdb->offset[1];
 	transform_md5(mdb->context, (uint32_t*)mdb->buffer);
 	ft_memcpy(final, mdb->context, 16);
+
+	/*
+uint8_t *p;
+	p=(uint8_t *)&mdb->context[0];
+    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
+    p=(uint8_t *)&mdb->context[1];
+    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
+    p=(uint8_t *)&mdb->context[2];
+    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
+    p=(uint8_t *)&mdb->context[3];
+	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
+	*/
+
 }
 
 void	algo_md5(char *input, size_t size)
@@ -265,6 +267,15 @@ void	algo_md5(char *input, size_t size)
 	(void)final;
 //	final_md5(&mdb, final);
 
+    uint8_t *p;
+	p=(uint8_t *)&mdb.context[0];
+    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
+    p=(uint8_t *)&mdb.context[1];
+    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
+    p=(uint8_t *)&mdb.context[2];
+    printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
+    p=(uint8_t *)&mdb.context[3];
+	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
 
-//	printf("%s\n", final);
+
 }
