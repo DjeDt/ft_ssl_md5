@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 16:31:33 by ddinaut           #+#    #+#              #
-#    Updated: 2018/12/11 18:34:48 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/12/18 17:48:30 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -49,6 +49,7 @@ SRCS =						\
 	routine_md5.c			\
 	algo_md5.c				\
 	aux_func_md5.c			\
+	swap.c					\
 	secure_hash_algo_512.c
 
 
