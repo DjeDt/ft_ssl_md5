@@ -6,13 +6,18 @@
 /*   By: ddinaut <ddinaut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 17:46:17 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/12/18 17:47:16 by ddinaut          ###   ########.fr       */
+/*   Updated: 2018/12/19 15:38:15 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
 
-uint64_t	swap_64(uint64_t n)
+uint32_t	swap_uint32(uint32_t val)
 {
-	return (((n) << 24) | (((n) & 0xff00) << 8) | (((n) >> 8) & 0xff00) | ((n) >> 24));
+	if (IS_LITTLE_ENDIAN)
+	{
+		val = ((val << 8) & 0xFF00FF00 ) | ((val >> 8) & 0xFF00FF );
+		return ((val << 16) | (val >> 16));
+	}
+	return (val);
 }

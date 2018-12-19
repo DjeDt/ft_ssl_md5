@@ -6,7 +6,7 @@
 /*   By: ddinaut <ddinaut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 21:03:32 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/12/09 19:03:10 by ddinaut          ###   ########.fr       */
+/*   Updated: 2018/12/19 13:26:48 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		md5_from_string(char *str, int flag)
 {
-	size_t		len;
+	uint64_t	len;
 
 	if (!str)
 	{
